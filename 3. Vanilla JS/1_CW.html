@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--//print nmae on screen -->
+    <label for="nameInput">Enter your name:</label>
+    <input type="text" id="nameInput"/>
+    <button id="greetButton">Greet</button>
+    <p id ="ShowGreetingMessage"></p>
+
+
+    <label for="emailInput" > Enter your email</label>
+    <input type="email" id="emailInput"/>      <!-- // we can also give  text we are validtion there -->
+    <button id="validateEmailButton">Validate Email</button>
+    <p id="emailValidationResult"></p>
+
+    <label for="numberInput">Enter a number</label>
+    <input type="number" id="numberInput"/>
+    <button id="calculateSquareButton">Calculate Square</button>
+    <p id="squareResult"></p>
+
+    <label for="urlInput">Enter the Url:</label>
+    <input type="text" id="urlInput" />
+    <button id="urlButton">Show link</button>
+    <p id="linkResult"></p>
+
+<!--count the woirjd inthe sentance-->
+    <label for="sentenceInput"></label>
+    <input type="text" id="sentenceInput"/>
+    <button id="countButton">Count Words</button>
+    <p id="countResult"></p>
+
+      
+    <script>
+        // get the dom element
+        const nameInput = document.getElementById("nameInput")
+        const greetButton = document.getElementById("greetButton")
+        const greetingMessage = document.getElementById("ShowGreetingMessage")
+
+        //what you want to do with the dom element
+        greetButton.addEventListener("click" , function(){
+            const userName = nameInput.value 
+            greetingMessage.textContent = `Good morning , ${userName}`
+        })
+
+        const emailInput = document.getElementById("emailInput")
+        const validateEmailButton = document.getElementById("validateEmailButton")
+        const emailValidationResult = document.getElementById("emailValidationResult")
+
+        
+
+        validateEmailButton.addEventListener("click" , function(){
+            const email= emailInput.value
+
+            // thing to validate  in email @ and .
+            //. is also not before @
+            //check for @ first 
+
+            const atIndex = email.indexOf("@")              
+            const dotIndex = email.indexOf(".")
+
+            if(atIndex > 0 && dotIndex > atIndex){
+                emailValidationResult.textContent="Valid email address"
+            } else{
+                emailValidationResult.textContent = "Invalid Email Address."
+            }
+            
+            console.log(atIndex)
+
+        })
+
+    // take number and give the sq
+
+    
+
+        const numberInput = document.getElementById("numberInput")
+        const calculateSquareButton = document.getElementById("calculateSquareButton")
+        const squareResult = document.getElementById('squareResult')
+
+        calculateSquareButton.addEventListener("click" ,function(){
+            const numberValue = numberInput.value
+            const square = numberValue*numberValue
+            squareResult.textContent = `Square of ${numberValue} is ${square}.`
+        })
+
+
+        const urlInput= document.getElementById("urlInput")
+        const urlButton = document.getElementById("urlButton")
+        const linkResut = document.getElementById("linkResult")
+
+        urlButton.addEventListener("click",function(){
+            const url = urlInput.value
+            linkResut.innerHTML= `<a href="${url}">${url}</a>`
+        })
+
+        const sentenceInput = document.getElementById("sentenceInput")
+        const countButton = document.getElementById("countButton")
+        const countResult = document.getElementById("countResult")
+
+        countButton.addEventListener("click" , function(){
+            const sentence = sentenceInput.value
+            const words = sentence.split(" ")
+            const wordCount = words.length;
+            countResult.textContent = `Word Count: ${wordCount}`
+        })
+
+    </script>
+
+</body>
+</html>
