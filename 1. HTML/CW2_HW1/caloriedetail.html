@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calorie Details</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">MyHealth</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="caloriereport.html">Calorie</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Calorie Details</h1>
+      <section id="calorie"></section>
+    </main>
+
+    <script>
+      let database = [
+        { id:"1" ,Meal: "Breakfast", item: "Dosa", Calories: "200 Cal" },
+        { id:"2" ,Meal: "launch", item: "pizza", Calories: "2000 Cal" },
+        { id:"3" ,Meal: "Dinner", item: "salad", Calories: "400 Cal" },
+      ];
+      //get the id
+
+      function getParameterById(id) {
+        let itemId = new URL(window.location.href);
+        return itemId.searchParams.get("id");
+      }
+
+      //storing in the item
+      let calorieItem = getParameterById("id");
+
+      let idNo;
+
+      for (let i = 0; i < database.length; i++) {
+        if (database[i].id === calorieItem) {
+          idNo = database[i];
+        }
+      }
+
+      let sectionId = document.getElementById("calorie");
+      if (idNo) {
+        sectionId.innerHTML = `
+                <h2>${idNo.Meal}</h2>
+                <ul>
+                    <li>Meal: ${idNo.Meal}</li>
+                    <li>Item: ${idNo.item}</li>
+                    <li>Calories: ${idNo.Calories}</li>
+                </ul>
+                `;
+      } else {
+        sectionId.innerHTML = "no data found";
+      }
+    </script>
+  </body>
+  <footer>
+    <p>&copy; 2023 MyHealth App.All rights reserved.</p>
+  </footer>
+</html>
