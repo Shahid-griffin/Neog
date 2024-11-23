@@ -37,7 +37,7 @@
           department: "Design",
         },
         {
-          d: "3",
+          id: "3",
           name: "Bob Jhonson",
           title: "Project Manager",
           department: "Management",
@@ -65,7 +65,6 @@
       let employeeDetailElement = document.getElementById("employeeDetail");
 
       if (employee) {
-
         employeeDetailElement.innerHTML = `
         <h2>${employee.name}</h2>
         <ul>
@@ -74,9 +73,11 @@
             <li>Department: ${employee.department}</li>
             </ul>
             
-        `
-      } else
-     employeeDetailElement.innerHTML="Employee not found"
+        `;
+      } else employeeDetailElement.innerHTML = "Employee not found";
     </script>
+    <footer>
+      <p>&copy; 2023 Company Name. All rights reserved.</p>
+    </footer>
   </body>
 </html>
