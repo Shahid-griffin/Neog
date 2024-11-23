@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">Movie Database</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="report.html">Report</a></li>
+        </ul>
+      </nav>
+      <h2>Movie Details</h2>
+    </header>
+    <main>
+        <section id="sectionID">
+
+        </section>
+    </main>
+
+    <script>
+        let Database =[
+            {id :"1" ,Genre: "Action",Details : "This is an action-packed movie.", Director:"John Doe", ReleaseDate : "2023-01-15"},
+            {id :"2" ,Genre: "Drama",Details : "A dramatic story unfolds in this movie.", Director:"Jane smith", ReleaseDate : "2023-02-20"},
+            {id :"3" ,Genre: "Comedy",Details : "Get ready to laugh with this comedy.", Director:"Jane Walk", ReleaseDate : "2023-05-20"}
+        ]
+
+        // get the id 
+
+        function getParamID(id){
+            let url = new URL(window.location.href)
+            return url.searchParams.get(id)
+        }
+
+        let movieID = getParamID("id")
+
+        //DOm manipulation
+
+        let movieDetail;
+        for(  let  i =0;i<Database.length;i++){
+            if( Database[i].id === movieID){
+                movieDetail = Database[i];
+            }
+        }
+
+        // display
+
+        let movieDetailElement = document.getElementById("sectionID")
+
+        if(movieDetail){
+            movieDetailElement.innerHTML=`
+            <h2>Movie ${movieDetail.id}</h2>
+            <p><strong>Genre: </strong>${movieDetail.Genre}</p>
+            <p><strong>Details: </strong>${movieDetail.Details}</p>
+            <p><strong>Release Date: </strong>${movieDetail.ReleaseDate}</p>
+            <p><strong>Director: </strong>${movieDetail.Director}</p>
+            `
+        }else{
+            movieDetailElement.innerHTML=`NO data found`
+        }
+
+    </script>
+  </body>
+</html>
