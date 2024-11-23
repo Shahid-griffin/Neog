@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Players Details</title>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">Cricket Players Database</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="players.html">Players</a></li>
+          <li><a href="report.html">Report</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+        <h2>Player Details</h2>
+        <section id="playersection">
+
+        </section>
+    </main>
+    <script>
+        let Database=[
+            {id : "1" ,Country : "India",Role : "Batsman"},
+            {id : "2" ,Country : "Australia", Role : "Bowler"}]
+
+        //get the id from the url;
+
+        function getParamID(id){
+            let url =  new URL(window.location.href)
+            return url.searchParams.get(id)
+        }
+
+        let playerID = getParamID('id')
+
+        let playerdetail;
+
+        for( let i=0;i<Database.length;i++){
+            if( Database[i].id === playerID){
+                playerdetail = Database[i];
+            }
+        }
+
+        let playerDetailElement = document.getElementById("playersection");
+
+        if(playerdetail){
+            playerDetailElement.innerHTML=`
+            <h2>Player ${playerdetail.id}</h2>
+            <p><strong>Country: </strong> ${playerdetail.Country}</p>
+            <p><strong>Role: </strong>${playerdetail.Role}</p>
+            `
+        }
+
+
+    </script>
+  </body>
+</html>
