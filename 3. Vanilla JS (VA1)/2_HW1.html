@@ -4,12 +4,35 @@
     <title>Js vanilla</title>
   </head>
   <body>
+    <!-- take input a age and validate it  -->
+
     <label for="ageInput">Enter your age: </label>
-    <input type="text" id="ageInput" />
+    <input type="number" id="ageInput" />
     <button id="ageButton">Validate Age</button>
     <p id="parasection"></p>
+
+    <label for="animalInput">Enter your favorite animal: </label>
+    <input type="text" id="animalInput" />
+    <button id="animalInputButton">Display Animal</button>
+    <p id="animalResult"></p>
+
+    <label for="colorInput">Enter your favorite color: </label>
+    <input type="text" id="colorInput" />
+    <button id="colorButton">Display Color</button>
+    <p id="colorResult"></p>
+
+    <label for="questionInput">Yes/No Question: </label>
+    <input type="text" id="questionInput" />
+    <button id="questionButton">Display Color</button>
+    <p id="questionResult"></p>
+
+    <label for="numberInput">Enter a number: </label>
+    <input type="number" id="numberInput" />
+    <button id="numberButton">Display Color</button>
+    <p id="numberResult"></p>
+
     <script>
-      // to get the id
+      //    to get the id
       const ageInput = document.getElementById("ageInput");
       const buttonInput = document.getElementById("ageButton");
       const ageResult = document.getElementById("parasection");
@@ -20,7 +43,54 @@
         if (inputValue >= 18 && inputValue <= 100) {
           ageResult.textContent = "Valid age";
         } else {
-          ageResult.textContent = "Invalid age";
+          ageResult.textContent =
+            "Invalid age Please Enter an age between 18 and 100";
+        }
+      });
+
+      // second part
+      const animalInput = document.getElementById("animalInput");
+      const animalButton = document.getElementById("animalInputButton");
+      const animalResult = document.getElementById("animalResult");
+
+      animalButton.addEventListener("click", function () {
+        const userValue = animalInput.value;
+        animalResult.textContent = `You favorite animal is ${userValue}`;
+      });
+
+      // third part
+
+      const colorInput = document.getElementById("colorInput");
+      const colorButton = document.getElementById("colorButton");
+      const colorResult = document.getElementById("colorResult");
+
+      colorButton.addEventListener("click", function () {
+        const color = colorInput.value;
+        colorResult.textContent = `Your favorite color is ${color}`;
+      });
+
+      //fourth part
+      const questionInput = document.getElementById("questionInput");
+      const questionButton = document.getElementById("questionButton");
+      const questionResult = document.getElementById("questionResult");
+
+      questionButton.addEventListener("click", function () {
+        const answer = questionInput.value;
+        questionResult.textContent = `You said ${answer}`;
+      });
+
+      // fifth part
+
+      const numberInput = document.getElementById("numberInput");
+      const numberButton = document.getElementById("numberButton");
+      const numberResult = document.getElementById("numberResult");
+
+      numberButton.addEventListener("click", function () {
+        const number = numberInput.value;
+        if (number % 2 === 0) {
+          numberResult.textContent = ` ${number} is EVEN`;
+        } else {
+          numberResult.textContent = `${number} is ODD`;
         }
       });
     </script>
