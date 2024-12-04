@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Js vanilla</title>
+  </head>
+  <body>
+    <label for="ageInput">Enter your age: </label>
+    <input type="text" id="ageInput" />
+    <button id="ageButton">Validate Age</button>
+    <p id="parasection"></p>
+    <script>
+      // to get the id
+      const ageInput = document.getElementById("ageInput");
+      const buttonInput = document.getElementById("ageButton");
+      const ageResult = document.getElementById("parasection");
+
+      // Dom manipulation
+      buttonInput.addEventListener("click", function () {
+        const inputValue = ageInput.value;
+        if (inputValue >= 18 && inputValue <= 100) {
+          ageResult.textContent = "Valid age";
+        } else {
+          ageResult.textContent = "Invalid age";
+        }
+      });
+    </script>
+  </body>
+</html>
