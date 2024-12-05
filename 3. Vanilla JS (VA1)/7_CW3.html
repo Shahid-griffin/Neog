@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            CW3
+        </title>
+    </head>
+    <body>
+        <label for="nameInput">Enter your name</label>
+        <input type="text" id="nameInput">
+        <button id="showNameBtn">Show name</button>
+        <p id="nameResult"></p>
+        <button id="styleBtn">Change Sytle</button>
+
+        <script>
+            const nameInput = document.querySelector("#nameInput")
+            const showNameBtn = document.querySelector("#showNameBtn")
+            const nameResult= document.querySelector("#nameResult")
+            const styleBtn = document.querySelector("#styleBtn")
+
+            showNameBtn.addEventListener("click",function(){
+                const nameValue = nameInput.value 
+                nameResult.textContent=`Your name: ${nameValue}`
+            })
+
+            styleBtn.addEventListener("click",function(){
+                nameResult.style.color = "green"
+                nameResult.style.backgroundColor = "yellow" 
+            })
+        </script>
+    </body>
+</html>
