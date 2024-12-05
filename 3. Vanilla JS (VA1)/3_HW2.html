@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vjs</title>
+    </head>
+    <body>
+        
+        <label for="countryInput">Enter your Country: </label>
+        <input type="text" id="countryInput">
+        <button id="countryButton">Display Country</button>
+        <p id="countryResult"></p>
+
+        <label for="websiteInput">Enter a Website name</label>
+        <input type="text" id="websiteInput">
+        <button id="websiteButton">Display Heading</button>
+        <p id="websiteResult"></p>
+
+        <label for="studentInput">Are you a student? </label>
+        <input type="text" id="studentInput">
+        <button id="studentButton">Display Response</button>
+        <p id="studentResult"></p>
+
+        <label for="ageInput">Enter your Age: </label>
+        <input type="number" id="ageInput">
+        <button id="ageButton">Check Age:</button>
+        <p id="ageResult"></p>
+
+
+        <script>
+            const countryInput = document.getElementById("countryInput")
+            const countryButton = document.getElementById("countryButton")
+            const countryResult = document.getElementById("countryResult")
+
+            countryButton.addEventListener("click",function(){
+                const country = countryInput.value 
+                if(country)
+                    countryResult.textContent=`Your Country is ${country}`
+                else{
+                    countryResult.textContent="Enter the country name"
+                }
+                
+            })
+
+            //second paart
+
+            const websiteInput = document.getElementById("websiteInput")
+            const websiteButton = document.getElementById("websiteButton")
+            const websiteResult = document.getElementById("websiteResult")
+
+            websiteButton.addEventListener("click",function(){
+                const website = websiteInput.value 
+                if(website){
+                    websiteResult.innerHTML =`<h3>${website}</h3>`
+                }else{
+                    websiteResult.textContent="Enter the website "
+                }
+            })
+
+            //third part 
+
+            const studentInput = document.getElementById("studentInput")
+            const studentButton = document.getElementById("studentButton")
+            const studentResult = document.getElementById("studentResult")
+
+            studentButton.addEventListener("click",function(){
+                const student = studentInput.value 
+                if( student === "YES" || student === "yes" ){
+                    studentResult.textContent="You are a student"
+                }else if(student === "NO" || student === "no"){
+                    studentResult.textContent="You are not a student"
+                }else{
+                    studentResult.textContent="Enter a YES yes or NO no only"
+                }
+            })
+
+            const ageInput =  document.getElementById("ageInput")
+            const ageButton = document.getElementById("ageButton")
+            const ageResult = document.getElementById("ageResult")
+
+            ageButton.addEventListener("click",function(){
+                const age =ageInput.value
+                if( age < 18){
+                    ageResult.textContent ="You are a minor"
+                } else if(age >18 && age <=100){
+                    ageResult.textContent = "You are an adult"  
+                }else{
+                    ageResult.textContent="Enter the age from 1 to 100 only"
+                }
+            })
+        </script>
+    </body>
+</html>
