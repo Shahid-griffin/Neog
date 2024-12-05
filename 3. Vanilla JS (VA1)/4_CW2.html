@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            VJS
+        </title>
+    </head>
+
+    <body>
+        
+        <label for="textareafeekback">Enter the Feedback: </label>
+        <textarea  id="textareafeekback" rows="5" cols="50"></textarea>
+        <button id="textBnt">Submit</button>
+        <p id="textResult"></p>
+
+        <label for="addressTextarea">Enter yout address: </label>
+        <textarea  id="addressTextarea" cols="50" rows="5"></textarea>
+        <button id="addressBtn">Submit</button>
+        <p id="addressResult"></p>
+
+        <label for="descriptionInput">Enter your Description: </label>
+        <textarea id="descriptionInput" rows="5" cols="50"></textarea>
+        <button id="descriptionBtn">Submit</button>
+        <p id="descriptionResult"></p>
+
+        <script>
+            const textareafeekback = document.getElementById("textareafeekback")
+            const textBnt = document.getElementById("textBnt")
+            const textResult = document.getElementById("textResult")
+            
+            textBnt.addEventListener("click",function(){
+                const text = textareafeekback.value
+
+                textResult.textContent=`Feedback : ${text}`
+            })
+
+            const addressTextarea = document.getElementById("addressTextarea")
+            const addressBtn = document.getElementById("addressBtn")
+            const addressResult = document.getElementById("addressResult")
+
+            addressBtn.addEventListener("click",function(){
+                const address = addressTextarea.value 
+                addressResult.textContent = `Your Address : ${address}`
+            })
+
+            const descriptionInput = document.getElementById("descriptionInput")
+            const descriptionBtn = document.getElementById("descriptionBtn")
+            const descriptionResult = document.getElementById("descriptionResult")
+
+            descriptionBtn.addEventListener("click",function(){
+                const description = descriptionInput.value
+
+                descriptionResult.textContent =` Description: ${description}`
+            })
+        </script>
+    </body>
+</html>
