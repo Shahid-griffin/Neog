@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            CW3_HW1
+        </title>
+    </head>
+
+    <body>
+        <label for="ageInput">Enter your age: </label>
+        <input type="number" id="ageInput">
+        <button id="ageBtn">Display Age</button>
+        <button id="checkBtn">Check Eligibility</button>
+        <p id="ageResult"></p>
+
+        <label for="studentInput">Are you a student: </label>
+        <input type="text" id="studentInput">
+        <button id="studetnBtn">Display Answer</button>
+        <button id="studentCheckBtn">Check Eligibility</button>
+        <p id="studentResult"></p>
+
+        <label for="passInput">Enter password: </label>
+        <input type="text" id="passInput">
+        <button id="passBtn">Display Password</button>
+        <button id="passcheckBtn">Check Password</button>
+        <p id="passResult"></p>
+
+    </body>
+
+    <script>
+        const ageInput = document.querySelector("#ageInput")
+        const ageBtn = document.querySelector("#ageBtn")
+        const checkBtn =document.querySelector("#checkBtn")
+        const ageResult = document.querySelector("#ageResult")
+        ageBtn.addEventListener("click",function(){
+            const age = ageInput.value
+            ageResult.textContent=`Your age : ${age}`
+            ageResult.style.color ="black"
+        })
+
+        checkBtn.addEventListener("click",function(){
+            const res = ageInput.value
+            // console.log(res)
+            if( res >= 18){
+                // console.log("ressss")
+                ageResult.style.color = "green"
+            }else{
+                ageResult.style.color = "red"
+            }
+        })
+        
+        const studentInput = document.querySelector("#studentInput")
+        const studentCheckBtn = document.querySelector("#studentCheckBtn")
+        const studetnBtn= document.querySelector("#studetnBtn")
+        const studentResult = document.querySelector("#studentResult")
+
+        studetnBtn.addEventListener("click",function(){
+            const student = studentInput.value  
+            
+            studentResult.textContent=`Your Answer : ${student}`
+            studentResult.style.color="black"
+        })
+
+        studentCheckBtn.addEventListener("click",function(){
+            const student = studentInput.value  
+            if(student === "YES"|| student === "yes"){
+                studentResult.textContent=`You are eligible`
+                studentResult.style.color ="green"
+            }else if(student === "NO" || student === "no"){
+                studentResult.textContent="You are not eligible"
+                studentResult.style.color= "red"
+            }else{
+                studentResult.textContent = "enter the valid answer"
+            }
+        })
+
+        const passInput = document.querySelector("#passInput")
+        const passcheckBtn = document.querySelector("#passcheckBtn")
+        const passBtn = document.querySelector("#passBtn")
+        const passResult = document.querySelector("#passResult")
+
+        passBtn.addEventListener("click",function(){
+            passResult.textContent=`Your password : ${passInput.value}`
+            passResult.style.color="black"
+        })
+
+        passcheckBtn.addEventListener("click",function(){
+            const pass = passInput.value
+            if(pass.includes("@")){
+                passResult.textContent=`password Accepted`
+                passResult.style.color="green"
+            }else{
+                passResult.textContent=` Invalid password `
+                passResult.style.color="red"                
+            }
+        })
+
+
+    </script>
+</html>
