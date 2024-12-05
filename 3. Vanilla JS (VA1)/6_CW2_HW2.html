@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hw2</title>
+  </head>
+  <body>
+    <label for="bookTextarea">Enter your book Review: </label>
+    <textarea id="bookTextarea" rows="5" cols="50"></textarea>
+    <button id="bookBtn">Display Book Review</button>
+    <p id="bookResult"></p>
+
+    <label for="bioTextarea">Enter your Personel Bio:</label>
+    <textarea id="bioTextarea" rows="5" cols="50"></textarea>
+    <button id="bioBtn">Display Styled Bio</button>
+    <p id="bioResult"></p>
+
+    <label for="diaryTextarea">Enter your Personel diary Entry</label>
+    <textarea  id="diaryTextarea" rows="5" cols="50"></textarea>
+    <button id="diaryBtn">Diaplay Diary Entry</button>
+    <p id="diaryResult"></p>
+
+    <script>
+
+        const bookTextarea = document.getElementById("bookTextarea")
+        const bookBtn = document.getElementById("bookBtn")
+        const bookResult = document.getElementById("bookResult")
+
+        bookBtn.addEventListener("click",function(){
+            const book = bookTextarea.value
+            bookResult.textContent=`Your book review ${book}`
+        })
+
+      const bioTextarea = document.getElementById("bioTextarea");
+      const bioBtn = document.getElementById("bioBtn");
+      const bioResult = document.getElementById("bioResult");
+
+      bioBtn.addEventListener("click", function () {
+        const bioInput = bioTextarea.value.trim();
+
+        // Handle fallback logic
+        const bioMessage = bioInput || "No bio provided";
+
+        // Render the result with a properly closed <p> tag
+        bioResult.innerHTML = `<p><i> ${bioMessage}</i></p>`;
+      });
+
+      const diaryTextarea = document.getElementById("diaryTextarea")
+      const diaryBtn = document.getElementById("diaryBtn")
+      const diaryResult =  document.getElementById("diaryResult")
+
+      diaryBtn.addEventListener("click",function(){
+        const diary = diaryTextarea.value
+        const date = new Date().toLocaleString();
+        diaryResult.innerHTML=`<p><strong>${date}</strong></p>
+        <p>${diary}</p>`
+      })
+    </script>
+  </body>
+</html>
