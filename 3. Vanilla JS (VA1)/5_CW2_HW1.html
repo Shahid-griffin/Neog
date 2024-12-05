@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HW1</title>
+  </head>
+  <body>
+    <label for="bookTextarea">Enter your favorite book list:</label>
+    <textarea id="bookTextarea" rows="5" cols="50"></textarea>
+    <button id="displayBtn">Display Book List</button>
+    <p id="bookResult"></p>
+
+    <label for="recipeTextarea">Enter recipe:</label>
+    <textarea id="recipeTextarea" rows="5" cols="50"></textarea>
+    <button id="recipeBtn">Display Recipe</button>
+    <p id="recipeResult"></p>
+
+    <label for="bioTextarea">Enter your Personel Bio:</label>
+    <textarea id="bioTextarea" rows="5" cols="50"></textarea>
+    <button id="bioBtn">Display Bio</button>
+    <p id="bioResult"></p>
+
+    <label for="goalTextarea">Enter your list of goals:</label>
+    <textarea id="goalTextarea" rows="5" cols="50"></textarea>
+    <button id="goalBtn">Display Goals</button>
+    <p id="goalResult"></p>
+
+    <label for="storyTextarea">Enter a short story or anecdote:</label>
+    <textarea id="storyTextarea" rows="5" cols="50"></textarea>
+    <button id="storyBtn">Display Story</button>
+    <p id="storyResult"></p>
+    <script>
+      const bookTextarea = document.getElementById("bookTextarea");
+      const displayBtn = document.getElementById("displayBtn");
+      const bookResult = document.getElementById("bookResult");
+
+      displayBtn.addEventListener("click", function () {
+        const book = bookTextarea.value;
+        bookResult.textContent = `Your favorite books: ${book}`;
+      });
+
+      const recipeTextarea = document.getElementById("recipeTextarea");
+      const recipeBtn = document.getElementById("recipeBtn");
+      const recipeResult = document.getElementById("recipeResult");
+
+      recipeBtn.addEventListener("click", function () {
+        const recipe = recipeTextarea.value.split(/\n\s*\n/); // Use recipeTextarea here
+        recipeResult.innerHTML = `
+      <h5>Ingredients:</h5> 
+      <p>${recipe[0] || "No ingredients provided"}</p>
+      <h5>Instructions:</h5>
+      <p>${recipe[1] || "No instructions provided"}</p>`;
+      });
+
+      const bioTextarea = document.getElementById("bioTextarea");
+      const bioBtn = document.getElementById("bioBtn");
+      const bioResult = document.getElementById("bioResult");
+
+      bioBtn.addEventListener("click", function () {
+        const bioInput = bioTextarea.value.trim();
+
+        // Handle fallback logic
+        const bioMessage = bioInput || "No bio provided";
+
+        // Render the result with a properly closed <p> tag
+        bioResult.innerHTML = `<p>Your personal Bio: ${bioMessage}</p>`;
+      });
+
+
+      const goalTextarea = document.getElementById("goalTextarea");
+      const goalBtn = document.getElementById("goalBtn");
+      const goalResult = document.getElementById("goalResult");
+
+      goalBtn.addEventListener("click", function () {
+        const goalInput = goalTextarea.value.trim();
+
+        // Handle fallback logic
+        const goalMessage = goalInput || "No info provided";
+
+        // Render the result with a properly closed <p> tag
+        goalResult.innerHTML = `<p>Your list of goals: ${goalMessage}</p>`;
+      });
+
+
+      const storyTextarea = document.getElementById("storyTextarea");
+      const storyBtn = document.getElementById("storyBtn");
+      const storyResult = document.getElementById("storyResult");
+
+      storyBtn.addEventListener("click", function () {
+        const storyInput = storyTextarea.value.trim();
+
+        // Handle fallback logic
+        const storyMessage = storyInput || "No bio provided";
+
+        // Render the result with a properly closed <p> tag
+        storyResult.innerHTML = `<p>Your short story: ${storyMessage}</p>`;
+      });
+
+
+    </script>
+  </body>
+</html>
