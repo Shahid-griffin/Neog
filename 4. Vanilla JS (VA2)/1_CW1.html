@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset="UTF-8" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="optInCheckbox">Select checkbox to opt-in:</label>
+    <br />
+    <input type="checkbox" id="optInCheckbox" /> Opt-In
+    <p id="optInResult"></p>
+
+    <label>Choose Pizza Toppings:</label>
+    <br />
+    <input type="checkbox" name="toppings" value="Pepperoni" /> Pepperoni
+    <input type="checkbox" name="toppings" value="Olive" /> Olive
+    <input type="checkbox" name="toppings" value="Mushroom" /> Mushroom
+    <p id="toppingResult"></p>
+
+    <label>Choose your preferred programming language:</label>
+    <br />
+    <input type="checkbox" name="languages" value="Javascript" /> Javascript
+    <br />
+    <input type="checkbox" name="languages" value="Java" /> Java <br />
+    <input type="checkbox" name="languages" value="C++" /> C++ <br />
+    <p id="languageResult"></p>
+
+    <script>
+      const optInCheckbox = document.querySelector("#optInCheckbox");
+      const optInResult = document.getElementById("optInResult");
+
+      optInCheckbox.addEventListener("change", function () {
+        console.log(optInCheckbox.checked)
+        if (optInCheckbox.checked) {
+          optInResult.textContent = "You are subcribed";
+        } else {
+            optInResult.textContent = ` `;
+        }
+      });
+
+      const toppingCheckBoxes = document.getElementsByName("toppings");
+      const toppingResult = document.querySelector("#toppingResult");
+
+      for (let i = 0; i < toppingCheckBoxes.length; i++) {
+        toppingCheckBoxes[i].addEventListener("change", function () {
+          const selectedToppings = [];
+
+          for (let j = 0; j < toppingCheckBoxes.length; j++) {
+            if (toppingCheckBoxes[j].checked) {
+              selectedToppings.push(toppingCheckBoxes[j].value);
+            }
+          }
+          toppingResult.textContent = `Selected toppings: ${selectedToppings.join(
+            ", "
+          )}`;
+        });
+      }
+
+      const languageCheckBox = document.getElementsByName("languages")
+      const languageResult = document.getElementById("languageResult")
+      
+      for(let i = 0 ;i<languageCheckBox.length;i++){
+        languageCheckBox[i].addEventListener("change",function(){
+            const selectedLanguage = []
+
+            for(let j = 0;j<languageCheckBox.length;j++){
+                if(languageCheckBox[j].checked){
+                    selectedLanguage.push(languageCheckBox[j].value)
+                }
+            }
+            languageResult.textContent = `Selected Language: ${selectedLanguage.join(", ")}`
+        })
+      }
+    </script>
+  </body>
+</html>
