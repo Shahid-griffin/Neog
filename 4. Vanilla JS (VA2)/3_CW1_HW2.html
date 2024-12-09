@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HW2</title>
+  </head>
+  <body>
+    <label>Program 1: Tick the checkbox below to agree to the terms:</label>
+    <br />
+    <input type="checkbox" id="terms" /> I agree to the terms and conditions.
+    <p id="consentResult"></p>
+
+    <label>Program 2: Select multiple food allergies: </label>
+    <input type="checkbox" name="milk" value="Dairy" /> Dairy
+    <input type="checkbox" name="milk" value="Nuts" /> Nuts
+    <input type="checkbox" name="milk" value="Gluten" /> Gluten
+    <button id="milkBtn">Display Selected Food Allergies</button>
+    <p id="milkResult"></p>
+
+    <label>Program 3: Choose multiple travel destination: </label>
+    <input type="checkbox" name="travel" value="Paris" /> Paris
+    <input type="checkbox" name="travel" value="New York" /> New York
+    <input type="checkbox" name="travel" value="Tokyo" /> Tokyo
+    <button id="travelBtn">Display Selected Travel Destination</button>
+    <p id="travelResult"></p>
+
+    <label>Program 4: Select multiple Sports: </label>
+    <input type="checkbox" name="sport" value="Soccer" /> Soccer
+    <input type="checkbox" name="sport" value="Basketball" /> Basketball
+    <input type="checkbox" name="sport" value="Tennis" /> Tennis
+    <button id="SportBtn">Display Selected Sport</button>
+    <p id="SportResult"></p>
+
+    <label>Program 5: Choose multiple clothing colors: </label>
+    <input type="checkbox" name="color" value="Black" /> Black
+    <input type="checkbox" name="color" value="White" /> White
+    <input type="checkbox" name="color" value="Blue" /> Blue
+    <button id="colorBtn">Display Selected Clothing Colors</button>
+    <p id="colorResult"></p>
+
+    <label>Program 6: Choose multiple social Media platform: </label>
+    <input type="checkbox" name="social" value="Facebook" /> Facebook
+    <input type="checkbox" name="social" value="Twitter" /> Twitter
+    <input type="checkbox" name="social" value="Instagram" /> Instagram
+    <button id="socialBtn">Display Selected Social Media Platform</button>
+    <p id="socialResult"></p>
+  </body>
+  <script>
+    const consentCheckbox = document.getElementById("terms");
+    const consentResult = document.getElementById("consentResult");
+
+    consentCheckbox.addEventListener("change", function () {
+      if (consentCheckbox.checked) {
+        consentResult.textContent = "User agreed the Terms";
+      } else {
+        consentResult.textContent = " ";
+      }
+    });
+
+    // program 2
+
+    const milkCheckbox = document.getElementsByName("milk");
+    const milkBtn = document.querySelector("#milkBtn");
+    const milkResult = document.getElementById("milkResult");
+
+    milkBtn.addEventListener("click", function () {
+      let milkArray = [];
+
+      for (let i = 0; i < milkCheckbox.length; i++) {
+        if (milkCheckbox[i].checked) {
+          milkArray.push(milkCheckbox[i].value);
+        }
+      }
+      console.log(milkArray);
+
+      if (milkArray.length > 0) {
+        milkResult.textContent = `Selected Food Allergies: ${milkArray.join(
+          ", "
+        )}`;
+      } else {
+        milkResult.textContent = "please Select an option";
+      }
+    });
+
+    //program 3
+
+    const SportCheckbox = document.getElementsByName("sport");
+    const SportBtn = document.querySelector("#SportBtn");
+    const SportResult = document.querySelector("#SportResult");
+
+    SportBtn.addEventListener("click", function () {
+      let sportArray = [];
+      for (let i = 0; i < SportCheckbox.length; i++) {
+        if (SportCheckbox[i].checked) {
+          sportArray.push(SportCheckbox[i].value);
+        }
+      }
+
+      if (sportArray.length > 0) {
+        SportResult.textContent = `Selected Sports: ${sportArray.join(
+          ", "
+        )}`;
+      } else {
+        SportResult.textContent = "please Select an option";
+      }
+    });
+
+    // program 4
+    const travelCheckbox = document.getElementsByName("travel");
+    const travelBtn = document.querySelector("#travelBtn");
+    const travelResult = document.querySelector("#travelResult");
+
+    travelBtn.addEventListener("click", function () {
+      let travelArray = [];
+      for (let i = 0; i < travelCheckbox.length; i++) {
+        if (travelCheckbox[i].checked) {
+          travelArray.push(travelCheckbox[i].value);
+        }
+      }
+
+      if (travelArray.length > 0) {
+        travelResult.textContent = `Selected Travel Destination: ${travelArray.join(
+          ", "
+        )}`;
+      } else {
+        travelResult.textContent = "please Select an option";
+      }
+    });
+
+    // program 5
+    const socialCheckbox = document.getElementsByName("social");
+    const socialBtn = document.querySelector("#socialBtn");
+    const socialResult = document.querySelector("#socialResult");
+
+    socialBtn.addEventListener("click", function () {
+      let socialArray = [];
+      for (let i = 0; i < socialCheckbox.length; i++) {
+        if (socialCheckbox[i].checked) {
+          socialArray.push(socialCheckbox[i].value);
+        }
+      }
+
+      if (socialArray.length > 0) {
+        socialResult.textContent = `Selected Social Media Platform: ${socialArray.join(
+          ", "
+        )}`;
+      } else {
+        socialResult.textContent = "please Select an option";
+      }
+    });
+
+    const colorCheckbox = document.getElementsByName("color");
+    const colorBtn = document.querySelector("#colorBtn");
+    const colorResult = document.querySelector("#colorResult");
+
+    colorBtn.addEventListener("click", function () {
+      let colorArray = [];
+      for (let i = 0; i < colorCheckbox.length; i++) {
+        if (colorCheckbox[i].checked) {
+          colorArray.push(colorCheckbox[i].value);
+        }
+      }
+
+      if (colorArray.length > 0) {
+        colorResult.textContent = `Selected Clothing Color : ${colorArray.join(
+          ", "
+        )}`;
+      } else {
+        colorResult.textContent = "please Select an option";
+      }
+    });
+  </script>
+</html>
