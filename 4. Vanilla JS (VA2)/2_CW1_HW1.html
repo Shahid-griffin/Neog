@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HW1 @ CW1</title>
+  </head>
+  <body>
+    <label>Program 1: Select multiple sports: </label>
+    <input type="checkbox" name="sports" value="Soccer" /> Soccer
+    <input type="checkbox" name="sports" value="Basketball" /> Basketball
+    <input type="checkbox" name="sports" value="Tennis" /> Tennis
+    <button id="DisplayBtn">Display Selected Sports</button>
+    <p id="sportsResult"></p>
+
+    <label>Program 2:Choose multiple vacation destination: </label>
+    <input type="checkbox" name="vacation" value="Beach" /> Beach
+    <input type="checkbox" name="vacation" value="Mountains" /> Mountains
+    <input type="checkbox" name="vacation" value="City" /> City
+    <button id="vacationBtn">Display Selected Destinations</button>
+    <p id="vacationResult"></p>
+
+    <label>Program 3:Choose multiple movie genres: </label>
+    <input type="checkbox" name="genre" value="Action" /> Action
+    <input type="checkbox" name="genre" value="Comedy" /> Comedy
+    <input type="checkbox" name="genre" value="Drama" /> Drama
+    <button id="movieBtn">Display Selected Genres</button>
+    <p id="movieResult"></p>
+
+    <label>Program 4:Choose multiple items from a restaurant menu: </label>
+    <input type="checkbox" name="food" value="Burger" /> Burger
+    <input type="checkbox" name="food" value="Pizza" /> Pizza
+    <input type="checkbox" name="food" value="Salad" /> Salad
+    <button id="foodBtn">Display Selected Genres</button>
+    <p id="foodResult"></p>
+    
+    <label>Program 5:Select multiple fruits: </label>
+    <input type="checkbox" name="fruits" value="Apple" /> Apple
+    <input type="checkbox" name="fruits" value="Banana" /> Banana
+    <input type="checkbox" name="fruits" value="Orange" /> Orange
+    <button id="fruitsBtn">Display Selected Genres</button>
+    <p id="fruitsResult"></p>
+
+    <script>
+      const sportsCheckbox = document.getElementsByName("sports");
+      const sportsResult = document.getElementById("sportsResult");
+      const DisplayBtn = document.getElementById("DisplayBtn");
+
+      // Add event listener for the button click
+      DisplayBtn.addEventListener("click", function () {
+        const sportsArray = []; // Create an empty array to store selected sports
+
+        // Iterate through each checkbox using a for loop
+        for (let i = 0; i < sportsCheckbox.length; i++) {
+          if (sportsCheckbox[i].checked) {
+            sportsArray.push(sportsCheckbox[i].value); // Add checked sports to the array
+          }
+        }
+
+        // Display results or prompt user to select options
+        if (sportsArray.length > 0) {
+          sportsResult.textContent = `Selected Sports: ${sportsArray.join(
+            ", "
+          )}`;
+        } else {
+          sportsResult.textContent = "Please select at least one option.";
+        }
+      });
+
+      const vacationBtn = document.getElementById("vacationBtn");
+      const vacationCheckbox = document.getElementsByName("vacation");
+      const vacationResult = document.querySelector("#vacationResult");
+
+      vacationBtn.addEventListener("click", function () {
+        let vacationArray = [];
+
+        for (let i = 0; i < vacationCheckbox.length; i++) {
+          if (vacationCheckbox[i].checked) {
+            vacationArray.push(vacationCheckbox[i].value);
+          }
+        }
+
+        if (vacationArray.length > 0) {
+          vacationResult.textContent = `Selected Destination: ${vacationArray.join(
+            ", "
+          )}`;
+        } else {
+          vacationResult.textContent = "Please select at least one option.";
+        }
+      });
+
+
+      // movie-3
+      const movieBtn = document.getElementById("movieBtn");
+      const movieResult = document.getElementById("movieResult");
+      const movieCheckout = document.getElementsByName("genre");
+
+      movieBtn.addEventListener("click", function () {
+        let movieArray = [];
+
+        for (let i = 0; i < movieCheckout.length; i++) {
+          if (movieCheckout[i].checked) {
+            movieArray.push(movieCheckout[i].value);
+          }
+        }
+
+        if (movieArray.length > 0) {
+          movieResult.textContent = `Selected Movie Genres : ${movieArray.join(
+            ", "
+          )}`;
+        } else {
+          movieResult.textContent = "Please select at least one option.";
+        }
+      });
+
+
+      // movie 4
+      const foodCheckbox = document.getElementsByName("food");
+      const foodResult = document.getElementById("foodResult");
+      const foodBtn = document.getElementById("foodBtn");
+
+      // Add event listener for the button click
+      foodBtn.addEventListener("click", function () {
+        const foodArray = []; // Create an empty array to store selected sports
+
+        // Iterate through each checkbox using a for loop
+        for (let i = 0; i < foodCheckbox.length; i++) {
+          if (foodCheckbox[i].checked) {
+            foodArray.push(foodCheckbox[i].value); // Add checked sports to the array
+          }
+        }
+
+        // Display results or prompt user to select options
+        if (foodArray.length > 0) {
+          foodResult.textContent = `Selected Sports: ${foodArray.join(
+            ", "
+          )}`;
+        } else {
+          foodResult.textContent = "Please select at least one option.";
+        }
+      });
+
+      const fruitsCheckbox = document.getElementsByName("fruits");
+      const fruitsResult = document.getElementById("fruitsResult");
+      const fruitsBtn = document.getElementById("fruitsBtn");
+
+      // Add event listener for the button click
+      fruitsBtn.addEventListener("click", function () {
+        const fruitsArray = []; // Create an empty array to store selected sports
+
+        // Iterate through each checkbox using a for loop
+        for (let i = 0; i < fruitsCheckbox.length; i++) {
+          if (fruitsCheckbox[i].checked) {
+            fruitsArray.push(fruitsCheckbox[i].value); // Add checked sports to the array
+          }
+        }
+
+        // Display results or prompt user to select options
+        if (fruitsArray.length > 0) {
+          fruitsResult.textContent = `Selected Sports: ${fruitsArray.join(
+            ", "
+          )}`;
+        } else {
+          fruitsResult.textContent = "Please select at least one option.";
+        }
+      });
+    </script>
+  </body>
+</html>
