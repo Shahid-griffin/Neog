@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HW2
+        </title>
+    </head>
+    <body>
+        
+        <label>Choose a season:</label>
+        <select  id="season">
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+        </select>
+        <button id="seasonBtn">Display Typical Weather</button>
+        <p id="seasonResult"></p>
+
+        <label>Choose a movie genre:</label>
+        <select  id="movie">
+            <option value="Romance">Romance</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Mystery">Mystery</option>
+        </select>
+        <button id="movieBtn">Display Movie Recommendation</button>
+        <p id="movieResult"></p>
+
+        <label>Choose a pet:</label>
+        <select  id="pet">
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Fish">Fish</option>
+        </select>
+        <button id="petBtn">Display Fun Facts</button>
+        <p id="petResult"></p>
+
+
+        <label>Choose a musical instrument:</label>
+        <select id="music">
+            <option value="Guitar">Guitar</option>
+            <option value="Violin">Violin</option>
+            <option value="Piano">Piano</option>
+        </select>
+        <p id="musicResult"></p>
+
+        <label>Choose a planet:</label>
+        <select  id="planet">
+            <option value="Earth">Earth</option>
+            <option value="Mars">Mars</option>
+            <option value="Jupitar">Jupitar</option>
+        </select>
+        <button id="planetBtn">Display Planet Fact</button>
+        <p id="planetResult"></p>
+
+        <script>
+
+
+            const seasonSelect = document.getElementById("season")
+            const seasonBtn = document.getElementById("seasonBtn")
+            const seasonResult = document.querySelector("#seasonResult")
+
+            seasonBtn.addEventListener("click",function(){
+                const selectedseason = seasonSelect.value
+
+                if(selectedseason === "Summer"){
+                    seasonResult.textContent="Typical Weather: Hot temperature and sunny days."
+                }else if(selectedseason === "Fall"){
+                    seasonResult.textContent="Typical Weather: Cooler temperature anf falling leaves "
+                }else if(selectedseason === "Winter"){
+                    seasonResult.textContent="Typical Weather: Cold Temperature and snowfall "
+                }else{
+                    seasonResult.textContent="Typical Weather: Mild Temperature and blooming flowers."
+                }
+            })
+
+            const movieSelect = document.getElementById("movie")
+            const movieBtn = document.getElementById("movieBtn")
+            const movieResult = document.querySelector("#movieResult")
+
+            movieBtn.addEventListener("click",function(){
+                const selectedMovie = movieSelect.value
+
+                if(selectedMovie === "Science Fiction"){
+                    movieResult.textContent="Movie Recommended : Dune"
+                }else if(selectedMovie === "Mystery"){
+                    movieResult.textContent="Movie Recommended : Gone Girl"
+                }else{
+                    movieResult.textContent="Movie Recommended : Pride "
+                }
+            })
+
+            const petSelect = document.getElementById("pet")
+            const petBtn = document.getElementById("petBtn")
+            const petResult = document.querySelector("#petResult")
+
+            petBtn.addEventListener("click",function(){
+                const selectedPet = petSelect.value
+                console.log(selectedPet)
+
+                if(selectedPet === "Dog"){
+                    petResult.textContent="Pet Description Dogs are loyal and friendly companions"
+                }else if(selectedPet === "Cat"){
+                    petResult.textContent="Pet Description Cat are independent and playful"
+                }else{
+                    petResult.textContent="Pet Description Fish are Low maintenance"
+                }
+            })
+
+            const musicSelect = document.getElementById("music")
+            const musicResult = document.getElementById("musicResult")
+
+            musicSelect.addEventListener("change",function(){
+
+            
+            const seletecMusic= musicSelect.value
+            
+            if(seletecMusic === "Guitar"){
+                musicResult.textContent="Sound: The guitar produce melodic tone"
+            }else if(seletecMusic === "Piano"){
+                musicResult.textContent="Sound: The Piano create harmonous music"
+            }else{
+                musicResult.textContent="Sound: The Violin make loud noice"
+            }
+        })
+           
+
+            const planetSelect = document.getElementById("planet")
+            const planetBtn = document.getElementById("planetBtn")
+            const planetResult = document.querySelector("#planetResult")
+
+            planetBtn.addEventListener("click",function(){
+                const selectedplanet = planetSelect.value
+
+                if(selectedplanet === "Earth"){
+                    planetResult.textContent="Planet Facts :  only habitable planet"
+                }else if(selectedplanet === "Mars"){
+                    planetResult.textContent="Planet Facts : closest to earth"
+                }else {
+                    planetResult.textContent="Planet Facts : largest amongst the planet"
+                }
+            })
+        </script>
+        
+   
+    </body>
+</html>
