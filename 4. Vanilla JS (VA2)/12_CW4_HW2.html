@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CW4 HW2</title>
+  </head>
+  <body>
+    <h1>Product Order Form</h1>
+    <form id="EventForm">
+      <label for="productName">Name: </label>
+      <input type="text" id="productName" /><br /><br />
+
+      <label for="quantity">Enter Quantity:</label>
+      <input type="number" id="quantity" min="1" value="1" />
+      <br />
+      <br />
+
+      <label for="userAddress">Shipping Address: </label> <br />
+      <textarea id="userAddress" rows="5" cols="50"></textarea><br /><br />
+
+      <label>Payment Method:</label><br />
+      <label for="Creditcard">
+        <input type="radio" name="payment" value="Creditcard" id="Creditcard" />
+        Credit Card </label
+      ><br />
+      <label for="PayPal">
+        <input type="radio" name="payment" value="PayPal" id="PayPal" />
+        PayPal </label
+      ><br />
+      <label for="BankTransfer">
+        <input
+          type="radio"
+          name="payment"
+          value="BankTransfer"
+          id="BankTransfer"
+        />
+        Bank Transfer </label
+      ><br /><br />
+
+      <label>Delivery Speed:</label>
+      <select id="speed">
+        <option value="Standard">Standard</option>
+        <option value="Express">Express</option>
+        <option value="Same Day">Same Day</option></select
+      ><br /><br />
+
+      <input type="submit" value="Place order" />
+    </form>
+    <div id="formResult"></div>
+
+    <script>
+      const userProfileForm = document.getElementById("EventForm");
+
+      userProfileForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const productName = document.getElementById("productName").value;
+        const quantity = document.getElementById("quantity").value;
+        const userAddress = document.getElementById("userAddress").value;
+
+        const userPayment = document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
+
+        const userSpeed = document.getElementById("speed").value;
+
+        const userInputValues = `
+          <h2>Order Details:</h2>
+          <p><strong>Product Name: </strong>${productName}</p>
+          <p><strong>Quantity: </strong>${quantity}</p>
+          <p><strong>Shipping Address: </strong>${userAddress}</p>
+          <p><strong>Payment Method: </strong>${userPayment}</p>
+          <p><strong>Deliver Speed: </strong>${userSpeed}</p>
+        `;
+
+        const divElement = document.getElementById("formResult");
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
