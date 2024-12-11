@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CW4</title>
+  </head>
+  <body>
+    <h1>User Profile Form</h1>
+    <form id="userProfileForm">
+      <label for="userName">Enter Your Name:</label><br />
+      <input type="text" id="userName" />
+      <br /><br />
+
+      <label for="fullAddress">Enter Full Address:</label>
+      <br />
+      <textarea id="fullAddress" cols="50" rows="5"></textarea>
+      <br /><br />
+
+      <label>Select Your Gender:</label> <br />
+      <label for="male">
+        <input type="radio" name="gender" value="Male" /> Male
+      </label>
+      <br />
+      <label for="female">
+        <input type="radio" name="gender" value="Female" /> Female
+      </label>
+      <br />
+      <label for="other">
+        <input type="radio" name="gender" value="Other" /> Other
+      </label>
+      <br /><br />
+
+      <label>Select Multiple Interests:</label><br />
+      <label for="reading">
+        <input
+          type="checkbox"
+          name="interest"
+          value="Reading"
+          id="Reading"
+        />Reading
+        <br />
+      </label>
+      <label for="Gardening">
+        <input
+          type="checkbox"
+          name="interest"
+          value="Gardening"
+          id="Gardening"
+        />Gardening
+        <br />
+      </label>
+      <label for="Painting">
+        <input
+          type="checkbox"
+          name="interest"
+          value="Painting"
+          id="Painting"
+        />Painting
+        <br />
+      </label>
+      <br /><br />
+
+      <label>Select Favorite Color:</label><br />
+      <select id="colorSelect">
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+      </select>
+      <br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="formResult"></div>
+    <script>
+      const userProfileForm = document.getElementById("userProfileForm");
+
+      userProfileForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const userName = document.getElementById("userName").value;
+        const fullAddress = document.getElementById("fullAddress").value;
+        const gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+        const interest = document.querySelectorAll(
+          'input[name="interest"]:checked'
+        );
+
+        let selectedArray = [];
+        for (let i = 0; i<interest.length; i++) {
+          selectedArray.push(interest[i].value);
+        }
+
+        const favColor = document.getElementById("colorSelect").value;
+
+        const userInputValues = `<h2>Submitted Information</h2>
+            <p>Name: ${userName}</p>
+            <p>Full Address ${fullAddress}</p>
+            <p>Gender: ${gender}</p>
+            <p>Interest: ${selectedArray.join(", ")}</p>
+            <p>Favorite Color: ${favColor}</p>`;
+
+        const divElement = document.getElementById("formResult");
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>

@@ -44,7 +44,7 @@
       for (let i = 0; i < musicRadioBtn.length; i++) {
         musicRadioBtn[i].addEventListener("change", function () {
           const selectedRadioBtn = document.querySelector(
-            "input[name=music]:checked"
+            'input[name="music"]:checked'
           ).value;
           musicResult.textContent = `Selected Genre : ${selectedRadioBtn}`;
         });
@@ -56,7 +56,7 @@
       for (let i = 0; i < languageRadioBtn.length; i++) {
         languageRadioBtn[i].addEventListener("change", function () {
           const selectedRadioBtn = document.querySelector(
-            "input[name=language]:checked"
+            'input[name="language"]:checked'
           ).value;
           languageResult.textContent = `Selected language : ${selectedRadioBtn}`;
         });
@@ -69,7 +69,7 @@
 
       jobBtn.addEventListener("click", function () {
         const selectedRadioBtn = document.querySelector(
-          "input[name=job]:checked"
+          'input[name="job"]:checked'
         );
         if (selectedRadioBtn) {
           jobResult.textContent = `Selected Job Role: ${selectedRadioBtn.value}`;
@@ -85,7 +85,7 @@
 
       hobbyBtn.addEventListener("click", function () {
         const selectedRadioBtn = document.querySelector(
-          "input[name=hobby]:checked"
+          'input[name="hobby"]:checked'
         );
         if (selectedRadioBtn) {
           hobbyResult.textContent = `Selected Hobby: ${selectedRadioBtn.value}`;
@@ -101,7 +101,7 @@
 
       fashionBtn.addEventListener("click", function () {
         const selectedRadioBtn = document.querySelector(
-          "input[name=fashion]:checked"
+          'input[name="fashion"]:checked'
         );
         if (selectedRadioBtn) {
           fashionResult.textContent = `Selected Clothing Style: ${selectedRadioBtn.value}`;
