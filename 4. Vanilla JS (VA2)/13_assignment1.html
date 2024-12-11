@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assign1</title>
+  </head>
+  <body>
+    <h1>Feedback Form</h1>
+    <form id="feedbackForm">
+      <label for="userName">Name: </label>
+      <input type="text" id="userName" /><br /><br />
+
+      <label for="userfeedback">Feedback:</label><br>
+        <textarea id="userfeedback" rows="5" cols="50"></textarea>
+        <br><br>
+
+      <label>Rate our Service:</label><br />
+      <label for="exe">
+        <input type="radio" name="event" value="Excelllent" id="exe" /> Excelllent
+      </label><br />
+      <label for="good">
+        <input type="radio" name="event" value="Good" id="good" /> Good
+      </label><br />
+      <label for="fair">
+        <input type="radio" name="event" value="Fair" id="fair" /> Fair
+      </label><br /><br />
+
+      <label>Select Topics of interest:</label><br />
+      <label for="tech">
+        <input type="checkbox" name="diet" value="Technology" id="tech" /> Technology
+      </label><br />
+      <label for="Travel">
+        <input type="checkbox" name="diet" value="Travel" id="Travel" /> Travel
+      </label><br />
+      <label for="food">
+        <input type="checkbox" name="diet" value="Food" id="food" /> Food
+      </label><br /><br />
+
+      <label>Overall Experience:</label>
+      <select id="experience">
+        <option value="Very Satisfied">Very Satisfied</option>
+        <option value="Satisfied">Satisfied</option>
+        <option value="Neutral">Neutral</option>
+      </select><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="formResult"></div>
+
+    <script>
+      const userProfileForm = document.getElementById("feedbackForm");
+
+      userProfileForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const userName = document.getElementById("userName").value;
+        const userfeedback = document.getElementById("userfeedback").value;
+        const eventType = document.querySelector(
+          'input[name="event"]:checked'
+        ).value;
+
+        const userDiet = document.querySelectorAll(
+          'input[name="diet"]:checked'
+        );
+
+        const userSelectedDiet = [];
+        for (let i = 0; i < userDiet.length; i++) {
+          userSelectedDiet.push(userDiet[i].value);
+        }
+
+        const userExperience = document.getElementById("experience").value;
+
+        const userInputValues = `
+          <h2>Feedback Submitted:</h2>
+          <p><strong>Name: </strong>${userName}</p>
+          <p><strong>Feedback: </strong>${userfeedback}</p>
+          <p><strong>Service Rating: </strong>${eventType}</p>
+          <p><strong>Topic of Interest: </strong>${userSelectedDiet.join(
+            ", "
+          )}</p>
+          <p><strong>Overall Experience: </strong>${userExperience}</p>
+        `;
+
+        const divElement = document.getElementById("formResult");
+        divElement.innerHTML = userInputValues;
+      });
+    </script>
+  </body>
+</html>
