@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HW1
+        </title>
+    </head>
+    <body>
+        <h1>Todo API</h1>
+        <button id="getApiData">Get Data</button>
+        <div id="dataContainer"></div>
+
+        <script>
+            const apiUrl = 'https://jsonplaceholder.typicode.com/todos/5'
+            const getApiData = document.getElementById("getApiData")
+            const dataContainer = document.querySelector("#dataContainer")
+
+            getApiData.addEventListener("click",function(){
+
+                fetch(apiUrl).then(function responseHandler(response){
+                    return response.json()
+                })
+                .then(function showdata(data){
+                    console.log(data)
+                    dataContainer.innerHTML=
+                    `<p> User id : ${data.userId} <br>
+                        Title : ${data.title} <br>
+                        Completed : ${data.completed}
+                        `
+                }).catch(function (error){
+                    dataContainer.textContent =" NO data found "
+                })
+            })
+        </script>
+    </body>
+</html>
