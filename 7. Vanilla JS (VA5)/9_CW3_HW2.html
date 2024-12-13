@@ -15,45 +15,45 @@
     </div>
 
     <script>
-        const apiUrl = 'https://jsonplaceholder.typicode.com/todos?_limit=3'
-        const randomBtn = document.querySelector("#randomBtn")
-        const dataContainer = document.querySelector("#dataContainer")
+      const apiUrl = "https://jsonplaceholder.typicode.com/todos?_limit=3";
+      const randomBtn = document.querySelector("#randomBtn");
+      const dataContainer = document.querySelector("#dataContainer");
 
-        randomBtn.addEventListener("click",function(){
-          dataContainer.innerHTML=`<div class="text-center"><p>Loading....</p></div>`
-          fetch(apiUrl)
-          .then(function responseHandler(response){
-            return response.json()
+      randomBtn.addEventListener("click", function () {
+        dataContainer.innerHTML = `<div class="text-center"><p>Loading....</p></div>`;
+        fetch(apiUrl)
+          .then(function responseHandler(response) {
+            return response.json();
           })
-          .then(function showData(data){
-            if(data.length > 0){
-              let userData = []
-              for(let i=0;i<data.length;i++){
-                let completeStatus
-                console.log(data[i].completed)
-                if(data[i].completed === false){
-                  completeStatus = "Not Completed"
-                }else{
-                  completeStatus ="Completed"
+          .then(function showData(data) {
+            if (data.length > 0) {
+              let userData = [];
+              for (let i = 0; i < data.length; i++) {
+                let completeStatus;
+                console.log(data[i].completed);
+                if (data[i].completed === false) {
+                  completeStatus = "Not Completed";
+                } else {
+                  completeStatus = "Completed";
                 }
-                let singledata =`<div class = "card mt-2">
+                let singledata = `<div class = "card mt-2">
                   <div class="card-body">
                      <h5 class="card-title">${data[i].title}</h5>
                      <p class="card-text">${completeStatus}</p>
                       </div>
-                  </div>`
-                  userData.push(singledata)
-                  const finalData = userData.join("")
-                  dataContainer.innerHTML=finalData
-                }
-            }else{
-              dataContainer.textContent="No data found"
+                  </div>`;
+                userData.push(singledata);
+                const finalData = userData.join("");
+                dataContainer.innerHTML = finalData;
+              }
+            } else {
+              dataContainer.textContent = "No data found";
             }
           })
-          .catch(function(error){
-            dataContainer.textContent="Error while fetching"
-          })
-        })
+          .catch(function (error) {
+            dataContainer.textContent = "Error while fetching";
+          });
+      });
     </script>
   </body>
 </html>
