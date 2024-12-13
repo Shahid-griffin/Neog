@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HW2
+        </title>
+    </head>
+    <body>
+        
+        <h1>JokeAPI - Programming Joke</h1>
+        <button id="getJokeBtn">Get Programming Joke</button>
+        <div id="dataContainer"></div>
+
+        <script>
+
+            const apiUrl = 'https://v2.jokeapi.dev/joke/Programming?type=single'
+            const getJokeBtn = document.getElementById("getJokeBtn")
+            const dataContainer = document.getElementById("dataContainer")
+
+            getJokeBtn.addEventListener("click",function(){
+                fetch(apiUrl).then(function responseHandler(respone){
+                    return respone.json()
+                })
+                .then(function showdata(data){
+                    dataContainer.innerHTML=`<p> ${data.joke}</p>`
+                })
+                .catch(function(error){
+                    dataContainer.textContent="error while fetching data"
+                })
+            })
+        </script>
+    </body>
+</html>
