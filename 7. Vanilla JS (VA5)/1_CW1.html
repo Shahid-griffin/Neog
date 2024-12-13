@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            API
+        </title>
+    </head>
+
+    <body>
+        
+        <h1>TODO API</h1>
+        <button id="getDataBtn">Get Data</button>
+        <div id="dataContainer"></div>
+    </body>
+
+    <script>
+        const dataContainer =document.querySelector("#dataContainer")
+        const getDataBtn = document.querySelector('#getDataBtn')
+        const apiUrl = "https://jsonplaceholder.typicode.com/todos/1"
+        //json
+        //any call tobrowser is calles as  req then sever fetch and respone we use repsone in fun
+        getDataBtn.addEventListener("click",function(){
+
+            fetch(apiUrl).then(function responseHandler(response){   //.then deciede what to do fun  will deice ehat to do 
+                return response.json() // to convert anydata into json
+            })
+            .then(function showdata(data){
+                console.log(data)
+                dataContainer.innerHTML=`User Id: ${data.userId} <br>
+                Title: ${data.title} <br> Completed Status : ${data.completed}`
+                
+            }) // we use ctach in case serverdoes notrespond
+            .catch(function(error){
+                dataContainer.textContent="an error has occured"
+            })
+        })
+            </script>
+</html>
