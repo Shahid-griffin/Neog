@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cw5</title>
+  </head>
+  <body>
+    <h1>Todo App</h1>
+    <button id="getTodos">Get Todos</button>
+    <ul id="listTodos"></ul>
+
+    <form id="todoForm">
+      <label for="title">Title</label><br />
+      <input type="text" id="title" />
+      <br /><br />
+      <label for="completedTodo">Complete</label>
+      <input type="checkbox" id="completedTodo" />
+      <br /><br />
+      <button type="submit">Add Todo</button>
+      <div id="dataContainer"></div>
+    </form>
+
+    <script>
+      const apiUrl = "https://todos-student-neog.replit.app/todos";
+      const todoForm = document.querySelector("#todoForm");
+      const title = document.querySelector("#title");
+      const completedTodo = document.querySelector("#completedTodo");
+      const getTodos = document.querySelector("#getTodos");
+      const listTodos = document.querySelector("#listTodos");
+      const dataContainer = document.querySelector("#dataContainer");
+
+      // Event listener for "Get Todos" button
+      getTodos.addEventListener("click", function () {
+        listTodos.innerHTML = ''; // Clear the previous list to avoid duplication
+
+        fetch(apiUrl)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            if (data) {
+              for (let i = 0; i < data.length; i++) {
+                const liElement = document.createElement("li");
+                liElement.textContent = `${data[i].title} (Completed: ${data[i].completed})`; // Fixed "Completed" typo
+                listTodos.appendChild(liElement);
+              }
+            } else {
+              dataContainer.textContent = "Failed to fetch data";
+            }
+          })
+          .catch(function (error) {
+            dataContainer.textContent = "An error occurred while getting the todos";
+          });
+      });
+
+      // Event listener for "Add Todo" form
+      todoForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Fixed missing parentheses in event.preventDefault()
+
+        const todoData = {
+          title: title.value,
+          completed: completedTodo.checked,
+        };
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: JSON.stringify(todoData),
+          headers: { "Content-Type": "application/json" }
+        })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            if (data) {
+              dataContainer.textContent = "Todo added successfully";
+            } else {
+              dataContainer.textContent = "Failed to add todo";
+            }
+          })
+          .catch(function (error) {
+            dataContainer.textContent = "An error occurred while adding the todo";
+          });
+      });
+    </script>
+  </body>
+</html>
+
