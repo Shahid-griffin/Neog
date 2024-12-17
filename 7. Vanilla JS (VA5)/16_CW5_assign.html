@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <title>Assign</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <h1 class="mt-2">Movie Database</h1>
+      <h2 class="mt-3">GET Movies</h2>
+      <button class="btn btn-primary mt-2" id="getMovieBtn">Get Movies</button>
+
+      <form id="userForm">
+        <h2 class="mt-3">POST Movie</h2>
+        <!-- Title -->
+        <label for="movieTitle">Title:</label><br />
+        <div class="mt-2">
+          <input type="text" class="form-control" id="movieTitle" required />
+        </div>
+        <br />
+
+        <!-- Release Year -->
+        <label for="movieYear">Release Year:</label><br />
+        <div class="mt-2">
+          <input
+            type="number"
+            class="form-control"
+            id="movieYear"
+            value="2000"
+            required
+          />
+        </div>
+        <br />
+
+        <!-- Genre -->
+        <label for="userGenre">Genre:</label><br />
+        <div class="mt-2">
+          <select id="userGenre" class="form-select" required>
+            <option value="" selected disabled>Select Genre</option>
+            <option value="Action">Action</option>
+            <option value="Drama">Drama</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Sci-fi">Sci-fi</option>
+            <option value="Horror">Horror</option>
+            <option value="Sports">Sports</option>
+            <option value="Musical">Musical</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <br />
+
+        <!-- Director -->
+        <label for="movieDirector">Director:</label>
+        <div class="mt-2">
+          <input type="text" id="movieDirector" class="form-control" required />
+        </div>
+        <br />
+
+        <!-- Language -->
+        <label for="movieLanguage">Language:</label>
+        <div class="mt-2">
+          <input
+            type="text"
+            id="movieLanguage"
+            class="form-control"
+            required
+          />
+        </div>
+        <br />
+
+        <!-- Country -->
+        <label for="userCountry">Country:</label><br />
+        <div class="mt-2">
+          <select id="userCountry" class="form-select" required>
+            <option value="" selected disabled>Select Country</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+          </select>
+        </div>
+        <br />
+
+        <!-- Rating -->
+        <label for="movieRating">Rating:</label>
+        <div class="mt-2">
+          <input
+            type="number"
+            id="movieRating"
+            class="form-control"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+        <br />
+
+        <!-- Plot -->
+        <label for="moviePlot">Plot:</label>
+        <div class="mt-2">
+          <textarea id="moviePlot" class="form-control" required></textarea>
+        </div>
+        <br />
+
+        <!-- Award -->
+        <label for="movieAward">Award:</label>
+        <div class="mt-2">
+          <input type="text" id="movieAward" class="form-control" />
+        </div>
+        <br />
+
+        <!-- Poster -->
+        <label for="moviePoster">Poster URL:</label>
+        <div class="mt-2">
+          <input type="text" class="form-control" id="moviePoster" />
+        </div>
+        <br />
+
+        <!-- Trailer -->
+        <label for="movieTrailer">Trailer URL:</label>
+        <div class="mt-2">
+          <input type="text" class="form-control" id="movieTrailer" />
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-success" id="addMovie">
+          Add Movie
+        </button>
+      </form>
+      <div id="addInfo" class="mt-2"></div>
+    </div>
+
+    <script>
+
+        const addInfo = document.querySelector("#addInfo")
+        const apiUrl = "https://va-5-assignment-express-student-neog.replit.app/movies"
+        const movieTitle = document.querySelector("#movieTitle")
+        const movieYear = document.querySelector("#movieYear")
+        const userGenre  = document.querySelector("#userGenre")
+        const movieDirector = document.querySelector("#movieDirector")
+        const movieLanguage = document.querySelector("#movieLanguage")
+        const userCountry = document.querySelector("#userCountry")
+        const movieRating = document.querySelector("#movieRating")
+        const moviePlot =document.querySelector("#moviePlot")
+        const moviePoster = document.querySelector("#moviePoster")
+        const movieTrailer =document.querySelector("#movieTrailer")
+        const addMovie = document.querySelector("#addMovie")
+        const getMovieBtn = document.querySelector("getMovieBtn")
+        const movieAward = document.querySelector("#movieAward")
+        const userForm = document.querySelector("#userForm")
+
+        userForm.addEventListener("submit",function(event){
+            event.preventDefault();
+
+            const userData = {
+               title : movieTitle.value,
+               releaseYear : movieYear.value,
+               language : movieLanguage.value,
+               country : userCountry.value,
+               rating : movieRating.value,
+               plot : moviePlot.value,
+               awards : movieAward.value,
+               genre : userGenre.value,
+               director : movieDirector.value,
+               posterUrl : moviePoster.value,
+               trailerUrl : movieTrailer.value,
+            }
+
+            fetch(apiUrl,{
+                method :"POST",
+                body : JSON.stringify(userData),
+                headers :{'Content-Type':'application/json'}
+            })
+            .then(function (response){
+                return response.json();
+            })
+            .then(function (data){
+                if(data){
+                    addInfo.textContent=JSON.stringify(userData)
+                }else{
+                    addInfo.innerHTML=`<p>No data found</p>`
+                }
+            })
+            .catch(function(error){
+                addInfo.innerHTML=`<p>Error While fetching</p>`
+            })
+        })
+
+    </script>
+  </body>
+</html>
