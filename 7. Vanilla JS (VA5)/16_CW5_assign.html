@@ -11,6 +11,7 @@
       <h1 class="mt-2">Movie Database</h1>
       <h2 class="mt-3">GET Movies</h2>
       <button class="btn btn-primary mt-2" id="getMovieBtn">Get Movies</button>
+      <div class="mt-2" id="movieGetData"></div>
 
       <form id="userForm">
         <h2 class="mt-3">POST Movie</h2>
@@ -64,12 +65,7 @@
         <!-- Language -->
         <label for="movieLanguage">Language:</label>
         <div class="mt-2">
-          <input
-            type="text"
-            id="movieLanguage"
-            class="form-control"
-            required
-          />
+          <input type="text" id="movieLanguage" class="form-control" required />
         </div>
         <br />
 
@@ -133,63 +129,95 @@
       </form>
       <div id="addInfo" class="mt-2"></div>
     </div>
-
     <script>
+      const addInfo = document.querySelector("#addInfo");
+      const apiUrl =
+        "https://va-5-assignment-express-student-neog.replit.app/movies";
+      const movieTitle = document.querySelector("#movieTitle");
+      const movieYear = document.querySelector("#movieYear");
+      const userGenre = document.querySelector("#userGenre");
+      const movieDirector = document.querySelector("#movieDirector");
+      const movieLanguage = document.querySelector("#movieLanguage");
+      const userCountry = document.querySelector("#userCountry");
+      const movieRating = document.querySelector("#movieRating");
+      const moviePlot = document.querySelector("#moviePlot");
+      const moviePoster = document.querySelector("#moviePoster");
+      const movieTrailer = document.querySelector("#movieTrailer");
+      const addMovie = document.querySelector("#addMovie");
+      const getMovieBtn = document.querySelector("#getMovieBtn");
+      const movieAward = document.querySelector("#movieAward");
+      const userForm = document.querySelector("#userForm");
+      const movieGetData = document.querySelector("#movieGetData");
+      getMovieBtn.addEventListener("click", function () {
+        movieGetData.innerHTML = `<p>Loading.....</p>`;
 
-        const addInfo = document.querySelector("#addInfo")
-        const apiUrl = "https://va-5-assignment-express-student-neog.replit.app/movies"
-        const movieTitle = document.querySelector("#movieTitle")
-        const movieYear = document.querySelector("#movieYear")
-        const userGenre  = document.querySelector("#userGenre")
-        const movieDirector = document.querySelector("#movieDirector")
-        const movieLanguage = document.querySelector("#movieLanguage")
-        const userCountry = document.querySelector("#userCountry")
-        const movieRating = document.querySelector("#movieRating")
-        const moviePlot =document.querySelector("#moviePlot")
-        const moviePoster = document.querySelector("#moviePoster")
-        const movieTrailer =document.querySelector("#movieTrailer")
-        const addMovie = document.querySelector("#addMovie")
-        const getMovieBtn = document.querySelector("getMovieBtn")
-        const movieAward = document.querySelector("#movieAward")
-        const userForm = document.querySelector("#userForm")
+        fetch(apiUrl)
+          .then(function responseHandler(response) {
+            return response.json();
+          })
+          .then(function showData(data) {
+            movieGetData.innerHTML = ""; // Clear loading text
 
-        userForm.addEventListener("submit",function(event){
-            event.preventDefault();
+            // Loop through the fetched data
+            for (let i = 0; i < data.length; i++) {
+              const movie = data[i];
 
-            const userData = {
-               title : movieTitle.value,
-               releaseYear : movieYear.value,
-               language : movieLanguage.value,
-               country : userCountry.value,
-               rating : movieRating.value,
-               plot : moviePlot.value,
-               awards : movieAward.value,
-               genre : userGenre.value,
-               director : movieDirector.value,
-               posterUrl : moviePoster.value,
-               trailerUrl : movieTrailer.value,
+              // Create a preformatted JSON-like string
+              const movieData = `
+                  <div class="card mt-3">
+                  <div class="card-body">
+                  <h5 class="card-title">Movie ID: ${movie._id}</h5>  
+                  <pre>${JSON.stringify(movie, null, 2)}</pre>
+                    </div>
+                 </div>
+                `;
+
+              // Append the card to the container
+              movieGetData.innerHTML += movieData;
             }
+          })
+          .catch(function (error) {
+            movieGetData.innerHTML = `<p>Error while fetching data: ${error.message}</p>`;
+          });
+      });
 
-            fetch(apiUrl,{
-                method :"POST",
-                body : JSON.stringify(userData),
-                headers :{'Content-Type':'application/json'}
-            })
-            .then(function (response){
-                return response.json();
-            })
-            .then(function (data){
-                if(data){
-                    addInfo.textContent=JSON.stringify(userData)
-                }else{
-                    addInfo.innerHTML=`<p>No data found</p>`
-                }
-            })
-            .catch(function(error){
-                addInfo.innerHTML=`<p>Error While fetching</p>`
-            })
+      userForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const userData = {
+          title: movieTitle.value,
+          releaseYear: movieYear.value,
+          language: movieLanguage.value,
+          country: userCountry.value,
+          rating: movieRating.value,
+          plot: moviePlot.value,
+          awards: movieAward.value,
+          genre: userGenre.value,
+          director: movieDirector.value,
+          posterUrl: moviePoster.value,
+          trailerUrl: movieTrailer.value,
+        };
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: JSON.stringify(userData),
+          headers: { "Content-Type": "application/json" },
         })
-
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            if (data) {
+              addInfo.textContent = "Movie added successfully!";
+              userForm.reset();
+            } else {
+              addInfo.innerHTML = `<p>Failed to add movie.</p>`;
+            }
+          })
+          .catch(function (error) {
+            addInfo.innerHTML = `<p>Error while submitting: ${error.message}</p>`;
+          });
+      });
     </script>
   </body>
 </html>
