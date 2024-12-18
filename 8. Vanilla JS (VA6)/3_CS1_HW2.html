@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HW2
+        </title>
+    </head>
+    <body>
+        <h1>Employee List</h1>
+        <ul id="employeeList"></ul>
+    </body>
+    <script>
+        const apiUrl = 'https://employee-management-backend-student-neog-ca.replit.app/employees'
+        const employeeList = document.querySelector('#employeeList')
+
+        function fetchData(){
+            employeeList.textContent="loading......."
+            fetch(apiUrl)
+            .then(function responseHandler(response){
+                return response.json()
+            })
+            .then(function showData(data){
+                // console.log(data)
+                if(data){
+                    employeeList.textContent=""
+                    for(let i = 0;i<data.length;i++){
+                       const  liElement = document.createElement('li')
+                       liElement.textContent=`${data[i].name} - ${data[i].gender} - ${data[i].department}`
+                       employeeList.append(liElement)
+                    }
+                }else{
+                    employeeList.textContent="NO data found "
+                }
+            })
+            .catch(function(error){
+                employeeList.textContent="Error wihle fetching"
+            })
+        }
+        fetchData()
+    </script>
+    </html>

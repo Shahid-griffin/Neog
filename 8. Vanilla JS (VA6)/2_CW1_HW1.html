@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            HW1
+        </title>
+    </head>
+    <body>
+        <h1>Movie List</h1>
+        <ul id="movieList"></ul>
+    </body>
+    <script>
+        const apiUrl = 'https://va-5-assignment-express-student-neog.replit.app/movies'
+        const movieList = document.querySelector('#movieList')
+
+        function fetchData(){
+           movieList.textContent="loading......."
+            fetch(apiUrl)
+            .then(function responseHandler(response){
+                return response.json()
+            })
+            .then(function showData(data){
+                if(data){
+                    movieList.textContent=""
+                    for(let i = 0;i<data.length;i++){
+                       const  liElement = document.createElement('li')
+                       liElement.textContent=`${data[i].title} - ${data[i].language} - ${data[i].rating} - ${data[i].director}`
+                       movieList.append(liElement)
+                    }
+                }else{
+                    movieList.textContent="NO data found "
+                }
+            })
+            .catch(function(error){
+                movieList.textContent="Error wihle fetching"
+            })
+        }
+        fetchData()
+    </script>
+    </html>

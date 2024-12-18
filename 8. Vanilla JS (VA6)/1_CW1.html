@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            CW1
+        </title>
+    </head>
+
+    <body>
+        <h1>Student List</h1>
+        <ul id="studentList" ></ul>
+    </body>
+
+    <script>
+        const apiUrl = 'https://student-management-student-neog.replit.app/students'
+        const studentList = document.querySelector("#studentList")
+
+
+
+        function fetchData(){
+            studentList.textContent="Loading.........."
+            fetch(apiUrl)
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(data){
+                if(data){
+                    studentList.textContent=""
+                    
+                    for(let i = 0;i<data.length;i++){
+                        const liElements = document.createElement('li')
+                            liElements.textContent =`${data[i].name} - ${data[i].grade}`
+                            studentList.appendChild(liElements)
+                    }
+                }else{
+                    studentList.textContent="No Data found"
+                }
+            })
+            .catch(function (error){
+                studentList.textContent="error while fetching"
+            })
+        }
+        
+        fetchData()
+        
+    </script>
+</html>
