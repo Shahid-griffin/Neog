@@ -66,6 +66,7 @@
             employeeForm.addEventListener("submit",function(event){
                 event.preventDefault();
                 loadingContainer.style.display ="block"
+                successContainer.style.display="none" // if i again click on subit it will remove prevous cusees msg
 
 
                 const userData ={
