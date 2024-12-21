@@ -53,7 +53,7 @@
 
       function deleteDestination(deleteBtn) {
         const listItem = deleteBtn.parentElement.parentElement;
-        if (listItem.childNodes[0].childNodes[0].checked) {
+        if (listItem.childNodes[0].childNodes[0].checked) { //retrn the list node sort of similar array 
           visitedPlacesCount--;
           updateCountView();
         }
