@@ -29,30 +29,42 @@ const Avatar = () => {
   return (
     <div>
       <img src="https://via.placeholder.com/200x200" alt="avatar" />
-    </div> 
-    )
+    </div>
+  );
 };
 
 //5. Create a React component called UserInfo to display the following user info.
 
-const UserInfo = () =>{
+const UserInfo = () => {
   const user = {
-      name: "Alice Smith",
-      age: 28,
-      email: "alice.smith@example.com",
-      bio: "Passionate about React and building innovative web applications."
-    };
+    name: "Alice Smith",
+    age: 28,
+    email: "alice.smith@example.com",
+    bio: "Passionate about React and building innovative web applications.",
+  };
 
   return (
     <div>
       <h1>User Information</h1>
-      <p><strong> Name: </strong>{user.name} </p>
-      <p><strong> Age: </strong>{user.age} </p>
-      <p><strong> Email: </strong>{user.email} </p>
-      <p><strong> Bio: </strong>{user.bio} </p>
+      <p>
+        <strong> Name: </strong>
+        {user.name}{" "}
+      </p>
+      <p>
+        <strong> Age: </strong>
+        {user.age}{" "}
+      </p>
+      <p>
+        <strong> Email: </strong>
+        {user.email}{" "}
+      </p>
+      <p>
+        <strong> Bio: </strong>
+        {user.bio}{" "}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 function App() {
   return (
