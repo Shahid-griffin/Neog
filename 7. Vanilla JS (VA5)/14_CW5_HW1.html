@@ -109,7 +109,7 @@
           })
           .then(function (data) {
             if (data) {
-              const finalData = JSON.stringify(userData);
+              const finalData = JSON.stringify(data);
               postData.textContent = finalData;
             } else {
               postData.textContent = "no data found";
