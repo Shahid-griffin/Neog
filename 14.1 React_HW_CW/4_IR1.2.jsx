@@ -1,5 +1,7 @@
 import "./App.css";
 
+// how to use the dynamic naimg in the react
+
 const StudentDetails = () => {
   const name = "shahid";
   const age = 25;

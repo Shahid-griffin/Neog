@@ -1,5 +1,5 @@
 import "./App.css";
-
+// hoow to pass props and use in the component
 const Greeting = (props) => {
   return <h1>Hello, {props.name}</h1>;
 };

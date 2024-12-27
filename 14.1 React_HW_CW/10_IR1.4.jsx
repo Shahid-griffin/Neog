@@ -1,5 +1,5 @@
 import "./App.css";
-
+//simple website in the react 
 const Header = () => {
   return (
     <header>

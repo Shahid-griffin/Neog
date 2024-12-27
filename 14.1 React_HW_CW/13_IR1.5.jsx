@@ -1,4 +1,5 @@
 import "./App.css";
+// how to do calculation
 
 const Addition = () => {
   const a = 2;
@@ -40,7 +41,7 @@ const Welcome = () => {
   const firstName = "john";
   const lastName = "Doe";
 
-  return <p>{`Welcome ,${firstName} ${lastName}`}</p>;
+  return <p>{`Welcome ,${firstName} ${lastName}`}</p>;   // how to use the string literal 
 };
 
 export default function App() {

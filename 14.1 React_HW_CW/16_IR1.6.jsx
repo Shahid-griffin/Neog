@@ -1,5 +1,7 @@
 import "./App.css";
 
+// how to do call function and write inside the component 
+
 const MathOperation = () => {
   const a = 20;
   const b = 8;
