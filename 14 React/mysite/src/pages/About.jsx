@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <main className="container py-4">
-      <h1>About Our Restaurants</h1>
+      <h1>About Airbnb</h1>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
