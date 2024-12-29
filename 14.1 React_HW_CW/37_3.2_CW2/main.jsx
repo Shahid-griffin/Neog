@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Optional Bootstrap JS
 import "./index.css";
 import App from "./App.jsx";
 import About from "./pages/About.jsx";
-import Restaurant from "./pages/Restaurant.jsx";
+import Blog from "./pages/Blog.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -18,13 +18,11 @@ const router = createBrowserRouter([
     path: "/about",
     element: <About />,
   },
-  {path: "/rest",
-    element: <Restaurant/>
-  }
+  { path: "/blog", element: <Blog /> },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>
 );
