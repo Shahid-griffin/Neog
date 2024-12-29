@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Optional Bootstrap JS
 import "./index.css";
-import RestaurantDetails,{restLoader} from "./pages/RestaurantDetail.jsx";
 import App from "./App.jsx";
 import About from "./pages/About.jsx";
 import Restaurant from "./pages/Restaurant.jsx";
@@ -21,11 +20,6 @@ const router = createBrowserRouter([
   },
   {path: "/rest",
     element: <Restaurant/>
-  },
-  {
-    path:"/rest/:restId",
-    element: <RestaurantDetails />,
-    loader: restLoader,
   }
 ]);
 

@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
-    <header className="bg-dark text-light ">
-    <div className="container ">
-      <h1 className="py-4">My Food Delivery Website</h1>
-      <nav className="navbar ">
+    <header className="bg-dark text-light">
+    <div className="container py-3">
+      <h1>My Food Delivery Website</h1>
+      <nav>
         <ul className="nav">
           <li className="nav-item">
             <NavLink className={"nav-link"} to="/">
