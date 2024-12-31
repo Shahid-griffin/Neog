@@ -1,9 +1,11 @@
 export default function Footer() {
     return (
       <>
-        <footer className="bg-dark text-light py-2 fixed-bottom">
+      <div className="pt-5">
+        <footer className="bg-dark text-light p-4 ">
           <p className="container ">&copy; 2024 Ecom Website</p>
         </footer>
+        </div>
       </>
     );
   }
