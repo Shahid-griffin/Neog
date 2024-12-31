@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Headers() {
   return (
     <>
-      <header className=" bg-dark text-light">
-        <h1 className=" container py-4">My Vacation Stays Website</h1>
-        <div className="container ">
-          <nav className="navbar">
+      <header className="bg-dark text-white">
+        <div className="container">
+          <h1 className="py-4">Ecommerce Website</h1>
+          <nav>
             <ul className="nav">
               <li className="nav-item">
                 <Link className={"nav-link"} to="/">
-                  Overview
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className={"nav-link"} to="/stays">
-                  Stays
+                <Link className={"nav-link"} to="/product">
+                  Products
                 </Link>
               </li>
               <li className="nav-item">

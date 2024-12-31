@@ -1,8 +1,10 @@
-export default function Footer (){
-    return(
-        <footer className="py-2 bg-dark text-white">
-            
-            <p className="container">&copy; 2024 AirBnb Compnay</p>
+export default function Footer() {
+    return (
+      <>
+        <footer className="bg-dark text-light py-2 fixed-bottom">
+          <p className="container ">&copy; 2024 Ecom Website</p>
         </footer>
-    )
-}
+      </>
+    );
+  }
+  
