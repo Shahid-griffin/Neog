@@ -1,55 +1,81 @@
-import { Link } from "react-router-dom";
-import Footer from "./components/Footer";
-import Headers from "./components/Headers";
+import { useState } from "react";
 
 export default function App() {
-  const posts = [
-    {
-      id: 1,
-      username: "john_doe",
-      imgUrl: "https://placehold.co/400x200?text=Hello+World",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      id: 2,
-      username: "jane_smith",
-      imgUrl: "https://placehold.co/400x200?text=Smiling+Jane",
-      content:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      id: 3,
-      username: "alice_wonder",
-      imgUrl: "https://placehold.co/400x200?text=Alice+In+Wonder+Park",
-      content:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-  ];
+  // by default structure to write th use tste hook
+  // const [statevariable,setterFunction] = useState(intialValue)
 
+  function ToggleTheme() {
+    const [theme, setTheme] = useState("Light");
+    return (
+      <div>
+        <p>Current Theme :{theme}</p>
+        <button onClick={() => setTheme(theme === "Light" ? "Dark" : "Light")}>
+          Toggle Theme
+        </button>
+      </div>
+    );
+  }
+
+  function TogglePassword() {
+    const [visibility, setVisibility] = useState(false);
+    return (
+      <>
+        <p>
+          {visibility ? "Mypassword : janaaL***" : "Mypassword : *********"}{" "}
+        </p>
+        <button onClick={() => setVisibility(!visibility)}>
+          Show/Hide Password
+        </button>
+      </>
+    );
+  }
+
+  function ToggleText() {
+    const [expanded, setExpanded] = useState(false);
+    const text = "this is a longer text is typically hidden unless expanded ";
+    return (
+      <>
+        <p>{expanded ? text : `${text.substring(0, 20)}...`}</p>
+        <button onClick={() => setExpanded(!expanded)}>
+          {expanded ? "Collapse" : "Expand"}
+        </button>
+      </>
+    );
+  }
+
+  function ToggleTab() {
+    const [activeTab, setActiveTab] = useState("Home");
+    return (
+      <>
+        <button onClick={() => setActiveTab("Home")}>Home</button>
+        <button onClick={() => setActiveTab("Profile")}>Profile</button>
+        <button onClick={() => setActiveTab("Message")}>Message</button>
+        <p>Content of {activeTab} tab.</p>
+      </>
+    );
+  }
+
+  function ToggleSize() {
+    const [fontSize, setFontSize] = useState(14);
+    return (
+      <>
+        <p style={{ fontSize: `${fontSize}px` }}>Adjust font size</p>
+        <button onClick={() => setFontSize(fontSize + 1)}>Increase Size</button>
+        <button onClick={() => setFontSize(fontSize - 1)}>Decrease Size</button>
+      </>
+    );
+  }
   return (
-    <>
-      <Headers />
-      <main className="container mb-3">
-        <h1 className="pt-3">Posts</h1>
-        <div>
-          <ul className="list-group">
-            {posts.map((post) => (
-              <li className="list-group-item" key={post.id}>
-               <Link to={`/profile/${post.username}`}>                                  {/*imp  */}
-                  <h5>{post.username}</h5></Link>
-                  <img
-                    src={post.imgUrl}
-                    alt={`Post by ${post.username}`}
-                    className="img-fluid rounded"
-                  />
-                  <p>{post.content}</p>
-                
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-      <Footer />
-    </>
+    <main className="container">
+      <ToggleTheme />
+      <hr />
+      <TogglePassword />
+      <hr />
+      <ToggleText />
+      <hr />
+      <ToggleTab />
+      <hr />
+      <ToggleSize />
+    </main>
   );
 }
