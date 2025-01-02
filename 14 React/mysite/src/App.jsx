@@ -1,129 +1,133 @@
 import { useState } from "react";
 
-export default function App() {
-  //mistake i made
-  // wrong function namein the buttton also the variable name inthe display missing key in span
-  function ToggleImg() {
-    const imgarr = [
-      "https://placehold.co/100x100?text=Image1",
-      "https://placehold.co/100x100?text=Image2",
-      "https://placehold.co/100x100?text=Image3",
-    ];
-    const [selectedimg, selectImg] = useState("");
+function ValidateNumber() {
+  const [number, setNumber] = useState();
 
-    return (
-      <>
-        <div>
-          {selectedimg && (
-            <img
-              className="mb-2"
-              src={selectedimg}
-              width="200"
-              height="200"
-              alt="selected"
-            />
-          )}
-        </div>
+  const setnumberHandler = (event) => {
+    setNumber(event.target.value);
+  };
+  const validateHandler = () => {
+    if (number.length == 10) {
+      alert("you number is valid");
+    } else {
+      alert("enter the valid number  of 10 digit");
+    }
+  };
 
-        {imgarr.map((image, index) => (
-          <span key={index}>
-            {" "}
-            <img
-              src={image}
-              onClick={() => selectImg(image)}
-              style={{
-                cursor: "pointer",
-              }}
-            />
-          </span>
-        ))}
-      </>
-    );
-  }
-
-  function ToogleItem() {
-    const [items, setItems] = useState([]); // State to store list items
-
-    const addItem = () => {
-      setItems((prevItems) => [...prevItems, `Item ${prevItems.length + 1}`]);
-    };
-
-    return (
-      <div>
-        <button onClick={addItem}>Show Item</button>
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-
-  function ToogleColor() {
-    const arr = ["red", "blue", "pink", "green"];
-    const [item, setColor] = useState("red");
-
-    const pickColor = () => {
-      const ans = Math.floor(Math.random() * arr.length);
-      setColor(arr[ans]);
-    };
-    return (
-      <div style={{ background: item }}>
-        <p>Background Color is {item}</p>
-        <button onClick={pickColor}>Change Color</button>
-      </div>
-    );
-  }
-
-  function ToggleLoading() {
-    const [visibility, setVisibility] = useState(true); // Fixed state variable and function names
-
-    return (
-      <>
-        {visibility ? <p>Content has loaded</p> : <p>loading...</p>}
-        <button onClick={() => setVisibility(!visibility)}>
-          Toggle Loading
-        </button>
-      </>
-    );
-  }
-
-  function ToggleLast(){
-    const arr =["Item 1","item 2","Item 3"]
-    const [last,setLast]=useState("Item 1")
-
-    return(
-      <>
-      <ul className="list-unstyled">
-        {arr.map((x,index)=>(
-          <li key={index} onClick={()=>setLast(x)}
-          style={{
-            cursor :"pointer",
-            color: last === x ? "blue" : "black",
-           
-          }}>{x}</li>
-        ))}
-      </ul>
-      {last && (
-          <p>
-            You selected: <strong>{last}</strong>
-          </p>)}
-      </>
-    )
-
-  }
   return (
     <>
-      <ToggleImg />
-      <hr />
-      <ToogleItem />
-      <hr />
-      <ToogleColor />
-      <hr />
-      <ToggleLoading />
-      <hr/>
-      <ToggleLast/>
+      <label for="usernumber">Enter your phone number</label>
+      <input id="usernumber" onChange={setnumberHandler} />
+      <button onClick={validateHandler}>Validate Phone Number</button>
+    </>
+  );
+}
+
+function ValiadtePassword(){
+  const [email,setPassword]=useState()
+  const setpasswordHandler =(event)=>{
+    setPassword(event.target.value)
+  }
+
+  const checkstrengthHandler=()=>{
+    if(email.length > 8){
+      alert("you password is strong")
+    }else{
+      alert("your passsword is weak min 8 char ")
+    }
+  }
+
+  return(
+    <>
+    <label for="userpassword">Enter your password</label>
+    <input type="password" id="userpassword" onChange={setpasswordHandler}/>
+    <button onClick={checkstrengthHandler}>Check Password Strength</button>
+    </>
+  )
+}
+
+
+function CalculateAge() {
+  const [age, setAge] = useState();
+
+  const setAgeHandler = (event) => {
+    const birthDate = event.target.value; // YYYY-MM-DD format
+    const yearOfBirth = birthDate.split("-")[0]; // Extract the year
+    setAge(yearOfBirth);
+  };
+
+  const ageHandler = () => {
+    const currentYear = new Date().getFullYear(); // Get current year dynamically
+    const calculatedAge = currentYear - age; 
+    alert(`You are ${calculatedAge} years old`); // Use calculatedAge here
+  };
+
+  return (
+    <>
+      <label htmlFor="userAge">Enter your birthday: </label>
+      <input type="date" id="userAge" onChange={setAgeHandler} />
+      <button onClick={ageHandler}>Calculate Age</button>
+    </>
+  );
+}
+
+
+function ShowColor(){
+
+  const [color,setcolor] = useState()
+  const [displayColor, setDisplayColor] = useState("");
+  const setcolorHandler =(event)=>{
+    setcolor(event.target.value)
+  }
+  const showhandler =()=>{
+    setDisplayColor(color)
+  }
+
+  return (
+    <>
+    <label for="usercolor">Enter your favorite color:</label>
+    <input id="usercolor" onChange={setcolorHandler} />
+    <button onClick={showhandler}>Display color</button>
+    <br/><br/>
+    {displayColor && (<p>Your favourite Color is {displayColor}</p>)}
+    </>
+  )
+}
+
+function ShowQuery(){
+
+  const [query,setquery] = useState()
+  const [displayQuery, setDisplayQuery] = useState("");
+  const setqueryHandler =(event)=>{
+    setquery(event.target.value)
+  }
+  const showhandler =()=>{
+    setDisplayQuery(query)
+  }
+
+  return (
+    <>
+    <label htmlFor="userquery">Enter your search query:</label>
+    <input id="userquery" onChange={setqueryHandler} />
+    <button onClick={showhandler}>Search</button>
+    <br/><br/>
+    {displayQuery && (<p>Searching for: {displayQuery}</p>)}
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <>
+      <ValidateNumber />
+      <br/><br/>
+      <ValiadtePassword/>
+      <br/> <br/>
+      <CalculateAge/>
+      <br/><br/>
+      <ShowColor/>
+      <br/><br/>
+      <ShowQuery/>
     </>
   );
 }
