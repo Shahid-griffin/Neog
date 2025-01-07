@@ -4,10 +4,9 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Employee from "./pages/Employee.jsx";
-import EmployeeDetails from "./pages/EmployeeDetails.jsx";
+import Movies from "./pages/Movies.jsx";
 import Report from "./pages/Report.jsx";
-// import MovieDetails from "./pages/MovieDetails.jsx";
+import MovieDetails from "./pages/MovieDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,16 +14,16 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/employee",
-    element: <Employee />,
+    path: "/movies",
+    element: <Movies />,
   },
   {
     path: "/report",
     element: <Report />,
   },
   {
-    path: "/employee/:employeeId",
-    element: <EmployeeDetails />,
+    path: "/movies/:movieId",
+    element: <MovieDetails />,
   },
 ]);
 
