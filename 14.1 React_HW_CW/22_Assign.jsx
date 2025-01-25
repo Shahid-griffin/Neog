@@ -11,7 +11,7 @@ const Headers = () => {
 };
 
 // prdocut main
-const ProductPage = ({ phoneprop }) => {
+const ProductPage = ({ phoneprop ,inStock}) => {
   // const { price,img,color, description, instock } = phone;
   return (
     <div>
@@ -28,7 +28,7 @@ const ProductPage = ({ phoneprop }) => {
       </p>
       <p>
         <strong>
-          {phoneprop.instock ? "In Stock" : "Currently out of stock"}
+          {inStock ? "In Stock" : "Currently out of stock"}
         </strong>
       </p>
     </div>
@@ -50,13 +50,13 @@ export default function App() {
     color: "Midnight Green",
     description:
       "The iPhone 14 Pro Max is a flagship iPhone that was released in September 2022. It features a 6.",
-    instock: true,
+    
   };
   return (
     <>
       <Headers />
       <main>
-        <ProductPage phoneprop={phone} />
+        <ProductPage phoneprop={phone} inStock ={true} />
       </main>
       <Footer />
     </>

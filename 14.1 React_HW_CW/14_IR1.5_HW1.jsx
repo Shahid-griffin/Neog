@@ -13,8 +13,19 @@ const ArrayOperations = () => {
   // Find the maximum out of the numbers in the array
   const max = Math.max(...numbers);
 
+  const max1 = numbers.reduce((acc, curr) => {
+    acc < curr ? (acc = curr) : acc;
+    return acc;
+  }, numbers[0]);
+
   // Find the minimum out of the numbers in the array
   const min = Math.min(...numbers);
+
+  const min1 = numbers.reduce((acc, curr) => {
+    acc > curr ? (acc = curr) : acc;
+    return acc;
+  }, numbers[0]);
+
 
   return (
     <div>
@@ -29,16 +40,25 @@ const ArrayOperations = () => {
 };
 
 // 2. Create a React component called ObjectManipulation, to update the age of person from 28 to 29 and display the person details.
-const ObjectManipulation = ({ person }) => {
-  const updatedPerson = Object.assign({}, person, { age: 29 });
+const ObjectManipulation = () => {
+  const person = {
+    name: "Sarah",
+    age: 28,
+    city: "New York",
+  };
+
+  const updatedInfo = { ...person, age: 29 };
+
   return (
     <div>
-      <p>Person: {updatedPerson.name}</p>
-      <p>Age: {updatedPerson.age}</p>
-      <p>City: {updatedPerson.city}</p>
+      <h1>Person Details</h1>
+      <p>Name: {updatedInfo.name}</p>
+      <p>Age: {updatedInfo.age}</p>
+      <p>City: {updatedInfo.city}</p>
     </div>
   );
 };
+
 
 // 3. Create a React component called SquareArea, to find the area of a square. The sides of square is 5 cm in length.
 const SquareArea = () => {
@@ -46,7 +66,7 @@ const SquareArea = () => {
   const area = side * side;
   return (
     <div>
-      <p>The area of the square is: {area} cm²</p>
+      <p>{`The area of the square is: ${area} cm²`}</p>
     </div>
   );
 };
@@ -68,24 +88,19 @@ const CircleArea = () => {
   const area = Math.PI * radius * radius;  // Use Math.PI for accuracy
   return (
     <div>
-      <p>The area of the Circle is: {area} cm²</p>
+      <p>{`The Area of circle is  ${area.toFixed(2)}`}</p>
     </div>
   );
 };
 
 export default function App() {
-  const person = {
-    name: "Sarah",
-    age: 28,
-    city: "New York",
-  };
 
   return (
     <>
       <ArrayOperations />
 
       <h1>Person Details</h1>
-      <ObjectManipulation person={person} />
+      <ObjectManipulation  />
 
       <h1>Area of Square</h1>
       <SquareArea />
