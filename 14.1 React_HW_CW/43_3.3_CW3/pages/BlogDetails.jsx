@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const BlogDetails = () => {
-  const blogId = useParams(); //hook
+  const blogId = useParams(); //hook  return an object  of key /object value pair of dyanamuc oparams 
   const blogs = [
     {
       id: 1,
