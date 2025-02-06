@@ -15,7 +15,7 @@ const cars = [
   { id: 9, make: "Hyundai", model: "Elantra", year: 2021 },
   { id: 10, make: "Kia", model: "Optima", year: 2020 },
   { id: 11, make: "Nissan", model: "Altima", year: 2022 },
-  { id: 12, make: "Volkswagen", model: "Passat", year: 2021 },
+  { id: 12, make: "Volcarskswagen", model: "Passat", year: 2021 },
   { id: 13, make: "Subaru", model: "Impreza", year: 2019 },
   { id: 14, make: "Mazda", model: "Mazda3", year: 2022 },
   { id: 15, make: "Jeep", model: "Wrangler", year: 2023 },

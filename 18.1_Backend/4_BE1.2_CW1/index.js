@@ -4,7 +4,7 @@ const Movie = require("./models/movies.models");
 
 initializeDatabase();
 
-const jsonData = fs.readFileSync("d:/backend/BE1.2_CW/movies.json");
+const jsonData = fs.readFileSync("movies.json", "utf-8"); // rerurn string format
 
 const moviesData = JSON.parse(jsonData);
 
